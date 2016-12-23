@@ -3,6 +3,9 @@
   "description": "typesafe-dispatcher",
   "version": "0.0.1",
   "author": "cotto",
+  "bugs": {
+    "url": "https://github.com/cotto89/typesafe-dispatcher/issues"
+  },
   "dependencies": {
     "@types/node": "^6.0.52"
   },
@@ -19,7 +22,22 @@
     "tslint": "^4.2.0",
     "typescript": "^2.1.4"
   },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENCE"
+  ],
+  "keywords": [
+    "EventEmitter",
+    "event",
+    "flux"
+  ],
   "license": "MIT",
+  "main": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cotto89/typesafe-dispatcher.git"
+  },
   "scripts": {
     "build": "npm-run-all build:*",
     "build:src": "tsc",
@@ -27,5 +45,6 @@
     "clean:dist": "rimraf ./dist",
     "lint": "tslint src/**/*.ts",
     "test": "NODE_ENV=test mocha"
-  }
+  },
+  "types": "dist/index.d.ts"
 }
