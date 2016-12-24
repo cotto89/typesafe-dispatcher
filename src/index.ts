@@ -8,7 +8,7 @@ export class Dispatcher<EventTypes> {
     }
 
     /**
-     * eventをtrigger
+     * Dispatch an event
      *
      * @param {string} event
      * @param {EventTypes[K]} payload
@@ -22,7 +22,7 @@ export class Dispatcher<EventTypes> {
     }
 
     /**
-     * eventをsubscribeする
+     * Subscribe events
      *
      * @param {Subscriber<EventTypes>} subscriber
      * @returns {Function} unsubscribe
@@ -36,6 +36,7 @@ export class Dispatcher<EventTypes> {
             (this.events.get(k) as Function[]).push(subscriber[k] as Function);
         });
 
+        /* unsubscribe */
         return () => {
             Object.keys(subscriber).forEach((k: keyof EventTypes) => {
                 const fns = this.events.get(k);
