@@ -3,7 +3,7 @@ class Dispatcher {
     constructor() {
         this.events = new Map();
         /**
-         * eventをtrigger
+         * Dispatch an event
          *
          * @param {string} event
          * @param {EventTypes[K]} payload
@@ -15,7 +15,7 @@ class Dispatcher {
             fns.forEach((f) => f(payload));
         };
         /**
-         * eventをsubscribeする
+         * Subscribe events
          *
          * @param {Subscriber<EventTypes>} subscriber
          * @returns {Function} unsubscribe
@@ -27,6 +27,7 @@ class Dispatcher {
                 }
                 this.events.get(k).push(subscriber[k]);
             });
+            /* unsubscribe */
             return () => {
                 Object.keys(subscriber).forEach((k) => {
                     const fns = this.events.get(k);

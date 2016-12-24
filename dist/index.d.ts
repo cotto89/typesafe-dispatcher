@@ -5,14 +5,14 @@ export declare class Dispatcher<EventTypes> {
     events: Map<keyof EventTypes, ((payload: any) => any)[]>;
     constructor();
     /**
-     * eventをtrigger
+     * Dispatch an event
      *
      * @param {string} event
      * @param {EventTypes[K]} payload
      */
     dispatch: <K extends keyof EventTypes>(event: K, payload: EventTypes[K]) => void;
     /**
-     * eventをsubscribeする
+     * Subscribe events
      *
      * @param {Subscriber<EventTypes>} subscriber
      * @returns {Function} unsubscribe
