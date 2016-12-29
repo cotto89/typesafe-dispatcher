@@ -38,7 +38,6 @@ class Dispatcher {
                 });
             };
         };
-        this.events = new Map();
     }
     get eventCount() {
         return this.events.size;

@@ -3,7 +3,6 @@ export declare type Subscriber<T> = {
 };
 export declare class Dispatcher<EventTypes> {
     events: Map<keyof EventTypes, ((payload: any) => any)[]>;
-    constructor();
     /**
      * Dispatch an event
      *
