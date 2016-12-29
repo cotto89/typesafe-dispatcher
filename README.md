@@ -27,11 +27,11 @@ const dispatcher = new Dispatcher<EventTypes>();
 // subscribe
 const unsubscribe = dispatcher.subscribe({
 	action: (payload) => {
-		assert.equal(typeof payload === 'number')
+		assert(typeof payload === 'number')
 	},
 
 	action2: (payload) => {
-		assert.equal(typeof payload.count === 'number')
+		assert(typeof payload.count === 'number')
 	}
 })
 
