@@ -1,6 +1,6 @@
 # Typesafe dispatcher
 
-This Dispatcher is using `keyof` and `MappedTypes`. So, This package required `"typescript": "^2.1.4"`.
+This Dispatcher is using `keyof` and `MappedTypes`. So, This package require `"typescript": "^2.1.4"`.
 
 ## Install
 
@@ -57,6 +57,9 @@ type Subscriber<T> = {[P in keyof T]?: (payload: T[P]) => any};
 import {Subscriber} from 'typesafe-dispatcher'
 
 const subscriber: Subscriber<EventTypes> = {
-	// ...
+	action: (payload) => console.log(payload),
+    // ...
 }
+
+dispatcher.subscribe(subscriber)
 ```

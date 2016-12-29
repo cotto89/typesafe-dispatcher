@@ -3,10 +3,6 @@ export type Subscriber<T> = {[P in keyof T]?: (payload: T[P]) => any};
 export class Dispatcher<EventTypes> {
     events: Map<keyof EventTypes, ((payload: any) => any)[]> = new Map();
 
-    constructor() {
-        this.events = new Map();
-    }
-
     /**
      * Dispatch an event
      *
