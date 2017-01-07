@@ -44,8 +44,8 @@ dispatcher.dispatch('action2', {count: 1})
 unsubscribe();
 ```
 
-![](https://cl.ly/0R1H1k0p0a3k/Image%202016-12-24%20at%2010.12.41%20%E5%8D%88%E5%89%8D.png)
-![](https://cl.ly/24431Y392c43/Image%202016-12-24%20at%2010.14.04%20%E5%8D%88%E5%89%8D.png)
+![](https://cl.ly/2Z2733433M3t/Image%202017-01-07%20at%204.14.57%20%E5%8D%88%E5%BE%8C.png)
+![](https://cl.ly/1f2H14072b3i/Image%202017-01-07%20at%204.15.33%20%E5%8D%88%E5%BE%8C.png)
 
 Type of subscriber
 
