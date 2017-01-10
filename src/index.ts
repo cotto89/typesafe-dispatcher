@@ -9,7 +9,7 @@ export interface Subscribe<T> {
 }
 
 export interface SubscribeAll<T> {
-    <K extends keyof T>(event: K, payload: T[K]): Function;
+    <K extends keyof T>(subscriber: (event: K, payload: T[K]) => any): Function;
 }
 
 export type Events<T> = Map<keyof T, ((payload: any) => any)[]>;
