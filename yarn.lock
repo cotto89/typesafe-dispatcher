@@ -7,14 +7,12 @@
   resolved "https://registry.yarnpkg.com/@types/empower/-/empower-1.2.30.tgz#c7cfc14b3a61e54c74c674c1fbc91ba2df0d1392"
 
 "@types/mocha@^2.2.36":
-  version "2.2.36"
-  resolved "https://registry.yarnpkg.com/@types/mocha/-/mocha-2.2.36.tgz#84e58982fc5f9ebe47d6fc0b1626dd1133db5c0d"
-  dependencies:
-    "@types/node" "*"
+  version "2.2.37"
+  resolved "https://registry.yarnpkg.com/@types/mocha/-/mocha-2.2.37.tgz#8e0d5327ffa0734999c1010967853de917f3a38e"
 
-"@types/node@*", "@types/node@^6.0.58":
-  version "6.0.58"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-6.0.58.tgz#7b3b7065f3cdf24e2349d35b68d2795cfa874553"
+"@types/node@^6.0.58":
+  version "6.0.59"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-6.0.59.tgz#b7fd8f3144c447c829a8eab8805c3a523e9e5b44"
 
 "@types/power-assert-formatter@*":
   version "1.4.28"
@@ -32,8 +30,8 @@
   resolved "https://registry.yarnpkg.com/@types/sinon/-/sinon-1.16.34.tgz#a9761fff33d0f7b3fe61875b577778a2576a9a03"
 
 acorn-es7-plugin@^1.0.10, acorn-es7-plugin@^1.0.12:
-  version "1.1.3"
-  resolved "https://registry.yarnpkg.com/acorn-es7-plugin/-/acorn-es7-plugin-1.1.3.tgz#6a032a71f1faf396a1a29729c7b150fe480cc17a"
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/acorn-es7-plugin/-/acorn-es7-plugin-1.1.5.tgz#f31e1a618f439bfdde8851dd875a3a163ca8201f"
 
 acorn@^4.0.0:
   version "4.0.4"
@@ -123,8 +121,8 @@ builtin-modules@^1.0.0:
   resolved "https://registry.yarnpkg.com/builtin-modules/-/builtin-modules-1.1.1.tgz#270f076c5a72c02f5b65a47df94c5fe3a278892f"
 
 call-matcher@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/call-matcher/-/call-matcher-1.0.0.tgz#eafa31036dbfaa9c0d1716f12ddacfd9c69ef22f"
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/call-matcher/-/call-matcher-1.0.1.tgz#5134d077984f712a54dad3cbf62de28dce416ca8"
   dependencies:
     core-js "^2.0.0"
     deep-equal "^1.0.0"
@@ -255,8 +253,8 @@ diff@1.4.0:
   resolved "https://registry.yarnpkg.com/diff/-/diff-1.4.0.tgz#7f28d2eb9ee7b15a97efd89ce63dcfdaa3ccbabf"
 
 diff@^3.0.1:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/diff/-/diff-3.1.0.tgz#9406c73a401e6c2b3ba901c5e2c44eb6a60c5385"
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/diff/-/diff-3.2.0.tgz#c9ce393a4b7cbd0b058a725c93df299027868ff9"
 
 dot-prop@^3.0.0:
   version "3.0.0"
@@ -508,8 +506,8 @@ event-stream@~3.3.0:
     through "~2.3.1"
 
 fast-levenshtein@~2.0.4:
-  version "2.0.5"
-  resolved "https://registry.yarnpkg.com/fast-levenshtein/-/fast-levenshtein-2.0.5.tgz#bd33145744519ab1c36c3ee9f31f08e9079b67f2"
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/fast-levenshtein/-/fast-levenshtein-2.0.6.tgz#3d8a5c66883a16a30ca8643e851f19baa7797917"
 
 filled-array@^1.0.0:
   version "1.1.0"
@@ -543,7 +541,7 @@ function-bind@^1.0.2, function-bind@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/function-bind/-/function-bind-1.1.0.tgz#16176714c801798e4e8f2cf7f7529467bb4a5771"
 
-glob@7.0.5, glob@^7.0.5:
+glob@7.0.5:
   version "7.0.5"
   resolved "https://registry.yarnpkg.com/glob/-/glob-7.0.5.tgz#b4202a69099bbb4d292a7c1b95b6682b67ebdc95"
   dependencies:
@@ -554,7 +552,7 @@ glob@7.0.5, glob@^7.0.5:
     once "^1.3.0"
     path-is-absolute "^1.0.0"
 
-glob@^7.1.1:
+glob@^7.0.5, glob@^7.1.1:
   version "7.1.1"
   resolved "https://registry.yarnpkg.com/glob/-/glob-7.1.1.tgz#805211df04faaf1c63a3600306cdf5ade50b2ec8"
   dependencies:
@@ -595,7 +593,7 @@ got@^5.0.0:
     unzip-response "^1.0.2"
     url-parse-lax "^1.0.0"
 
-graceful-fs@^4.1.2:
+graceful-fs@^4.1.11, graceful-fs@^4.1.2:
   version "4.1.11"
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.1.11.tgz#0e8bdfe4d1ddb8854d64e04ea7c00e2a026e5658"
 
@@ -834,13 +832,17 @@ merge-estraverse-visitors@^1.0.0:
   dependencies:
     brace-expansion "^1.0.0"
 
-minimist@0.0.8, minimist@~0.0.1:
+minimist@0.0.8:
   version "0.0.8"
   resolved "https://registry.yarnpkg.com/minimist/-/minimist-0.0.8.tgz#857fcabfc3397d2625b8228262e86aa7a011b05d"
 
 minimist@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.0.tgz#a35008b20f41383eec1fb914f4cd5df79a264284"
+
+minimist@~0.0.1:
+  version "0.0.10"
+  resolved "https://registry.yarnpkg.com/minimist/-/minimist-0.0.10.tgz#de3f98543dbf96082be48ad1a0c7cda836301dcf"
 
 mkdirp@0.5.1, mkdirp@^0.5.0:
   version "0.5.1"
@@ -1318,8 +1320,8 @@ through@2, through@~2.3, through@~2.3.1:
   resolved "https://registry.yarnpkg.com/through/-/through-2.3.8.tgz#0dd4c9ffaabc357960b1b724115d7e0e86a2e1f5"
 
 timed-out@^3.0.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/timed-out/-/timed-out-3.1.0.tgz#43b98b14bb712c9161c28f4dc1f3068d67a04ec2"
+  version "3.1.3"
+  resolved "https://registry.yarnpkg.com/timed-out/-/timed-out-3.1.3.tgz#95860bfcc5c76c277f8f8326fd0f5b2e20eba217"
 
 traverse@^0.6.6:
   version "0.6.6"
@@ -1350,8 +1352,8 @@ type-name@^2.0.0, type-name@^2.0.1:
   resolved "https://registry.yarnpkg.com/type-name/-/type-name-2.0.2.tgz#efe7d4123d8ac52afff7f40c7e4dec5266008fb4"
 
 typescript-simple@^7.0.0:
-  version "7.0.0"
-  resolved "https://registry.yarnpkg.com/typescript-simple/-/typescript-simple-7.0.0.tgz#4df070712800128b5e7587813064dd819b42b673"
+  version "7.0.2"
+  resolved "https://registry.yarnpkg.com/typescript-simple/-/typescript-simple-7.0.2.tgz#286ea7614385f2744624a40e83bcb67c6debf425"
   dependencies:
     typescript "^2.1.4"
 
@@ -1443,10 +1445,10 @@ wrappy@1:
   resolved "https://registry.yarnpkg.com/wrappy/-/wrappy-1.0.2.tgz#b5243d8f3ec1aa35f1364605bc0d1036e30ab69f"
 
 write-file-atomic@^1.1.2:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/write-file-atomic/-/write-file-atomic-1.2.0.tgz#14c66d4e4cb3ca0565c28cf3b7a6f3e4d5938fab"
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/write-file-atomic/-/write-file-atomic-1.3.1.tgz#7d45ba32316328dd1ec7d90f60ebc0d845bb759a"
   dependencies:
-    graceful-fs "^4.1.2"
+    graceful-fs "^4.1.11"
     imurmurhash "^0.1.4"
     slide "^1.1.5"
 
