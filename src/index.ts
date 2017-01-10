@@ -1,7 +1,22 @@
 export type Subscriber<T> = {[P in keyof T]?: (payload: T[P]) => any};
 
-export class Dispatcher<EventTypes> {
-    events: Map<keyof EventTypes, ((payload: any) => any)[]> = new Map();
+export interface Dispatch<T> {
+    <K extends keyof T>(event: K, payload: T[K]): void;
+}
+
+export interface Subscribe<T> {
+    (subscriber: Subscriber<T>): Function;
+}
+
+export interface SubscribeAll<T> {
+    <K extends keyof T>(event: K, payload: T[K]): Function;
+}
+
+export type Events<T> = Map<keyof T, ((payload: any) => any)[]>;
+
+export class Dispatcher<T> {
+    readonly events: Events<T> = new Map();
+    readonly listeners: Function[] = [];
 
     /**
      * Dispatch an event
@@ -9,22 +24,25 @@ export class Dispatcher<EventTypes> {
      * @param {string} event
      * @param {EventTypes[K]} payload
      */
-    dispatch = <K extends keyof EventTypes>(event: K, payload: EventTypes[K]) => {
-        const fns = this.events.get(event);
+    dispatch<K extends keyof T>(event: K, payload: T[K]) {
+        const subscriber = this.events.get(event);
 
-        if (!fns) return;
+        this.listeners.forEach((f) => f(event, payload));
 
-        fns.forEach((f) => f(payload));
+        if (!subscriber) return;
+        subscriber.forEach((f) => f(payload));
     }
+
 
     /**
      * Subscribe events
      *
-     * @param {Subscriber<EventTypes>} subscriber
+     * @param {Subscriber<T>} subscriber
      * @returns {Function} unsubscribe
      */
-    subscribe = (subscriber: Subscriber<EventTypes>) => {
-        Object.keys(subscriber).forEach((k: keyof EventTypes) => {
+    subscribe(subscriber: Subscriber<T>): Function {
+
+        Object.keys(subscriber).forEach((k: keyof T) => {
             if (!this.events.has(k)) {
                 this.events.set(k, []);
             }
@@ -34,7 +52,7 @@ export class Dispatcher<EventTypes> {
 
         /* unsubscribe */
         return () => {
-            Object.keys(subscriber).forEach((k: keyof EventTypes) => {
+            Object.keys(subscriber).forEach((k: keyof T) => {
                 const fns = this.events.get(k);
 
                 if (!fns) return;
@@ -45,11 +63,28 @@ export class Dispatcher<EventTypes> {
         };
     }
 
+
+    /**
+     * SubscribeAll events
+     *
+     * @param {subscriber}
+     * @returns {Function} unsubscribe
+     */
+    subscribeAll<K extends keyof T>(subscriber: (event: K, payload: T[K]) => any) {
+        this.listeners.push(subscriber);
+
+        /* unsubscribe */
+        return () => {
+            const idx = this.listeners.findIndex(t => t === subscriber);
+            this.listeners.splice(idx, 1);
+        };
+    }
+
     get eventCount() {
         return this.events.size;
     }
 
-    getSubscribers(event: keyof EventTypes) {
+    getSubscribers(event: keyof T) {
         return [...this.events.get(event) as Function[]];
     }
 }
