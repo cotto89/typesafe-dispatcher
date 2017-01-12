@@ -102,7 +102,7 @@ type Reactions<T> = {[P in keyof T]?: (payload: T[P]) => Partial<T> | Promise<Pa
 ```
 
 ```js
-import { Subscriber } from 'typesafe-dispatcher';
+import { Reactions } from 'typesafe-dispatcher';
 
 const reactions: Reactions<EventTypes> = {
     action: (count) => Promise.resolve<Partial<EventTypes>>({ action2: { count } }),
