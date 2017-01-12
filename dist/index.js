@@ -1,6 +1,6 @@
 "use strict";
-class Dispatcher {
-    constructor() {
+var Dispatcher = (function () {
+    function Dispatcher() {
         this.events = new Map();
         this.reacts = new Map();
         this.listeners = [];
@@ -12,99 +12,109 @@ class Dispatcher {
      * @param {EventTypes[K]} payload
      */
     /* tslint:disable:no-unused-expression */
-    dispatch(event, payload) {
+    Dispatcher.prototype.dispatch = function (event, payload) {
+        var _this = this;
         // publish for subscribeAll
-        this.listeners.forEach((f) => f(event, payload));
+        this.listeners.forEach(function (f) { return f(event, payload); });
         // publish for subscriber
-        const subscriber = this.events.get(event);
-        subscriber && subscriber.forEach((f) => f(payload));
+        var subscriber = this.events.get(event);
+        subscriber && subscriber.forEach(function (f) { return f(payload); });
         // invoke reaction
-        const react = this.reacts.get(event);
-        react && react.forEach((f) => {
-            const ret = f(payload);
+        var react = this.reacts.get(event);
+        react && react.forEach(function (f) {
+            var ret = f(payload);
             if (ret instanceof Promise) {
-                Promise.resolve(ret).then((r) => {
-                    this._dispatchFromObject(r);
+                Promise.resolve(ret).then(function (r) {
+                    _this._dispatchFromObject(r);
                 });
             }
             else {
-                this._dispatchFromObject(ret);
+                _this._dispatchFromObject(ret);
             }
         });
-    }
+    };
     /**
      * Subscribe events
      *
      * @param {Subscriber<T>} subscriber
      * @returns {Function} unsubscribe
      */
-    subscribe(subscriber) {
-        Object.keys(subscriber).forEach((k) => {
-            if (!this.events.has(k)) {
-                this.events.set(k, []);
+    Dispatcher.prototype.subscribe = function (subscriber) {
+        var _this = this;
+        Object.keys(subscriber).forEach(function (k) {
+            if (!_this.events.has(k)) {
+                _this.events.set(k, []);
             }
-            this.events.get(k).push(subscriber[k]);
+            _this.events.get(k).push(subscriber[k]);
         });
         /* unsubscribe */
-        return () => {
-            Object.keys(subscriber).forEach((k) => {
-                const fns = this.events.get(k);
+        return function () {
+            Object.keys(subscriber).forEach(function (k) {
+                var fns = _this.events.get(k);
                 if (!fns)
                     return;
-                const idx = fns.findIndex(target => target === subscriber[k]);
+                var idx = fns.findIndex(function (target) { return target === subscriber[k]; });
                 fns.splice(idx, 1);
             });
         };
-    }
+    };
     /**
      * SubscribeAll events
      *
      * @param {subscriber}
      * @returns {Function} unsubscribe
      */
-    subscribeAll(subscriber) {
+    Dispatcher.prototype.subscribeAll = function (subscriber) {
+        var _this = this;
         this.listeners.push(subscriber);
         /* unsubscribe */
-        return () => {
-            const idx = this.listeners.findIndex(t => t === subscriber);
-            this.listeners.splice(idx, 1);
+        return function () {
+            var idx = _this.listeners.findIndex(function (t) { return t === subscriber; });
+            _this.listeners.splice(idx, 1);
         };
-    }
+    };
     /**
      * Reaction(Subscribe event for reaction)
      * Reaction is subscribe event -> publish other event
      */
-    reaction(reactions) {
-        Object.keys(reactions).forEach((k) => {
-            if (!this.reacts.has(k)) {
-                this.reacts.set(k, []);
+    Dispatcher.prototype.reaction = function (reactions) {
+        var _this = this;
+        Object.keys(reactions).forEach(function (k) {
+            if (!_this.reacts.has(k)) {
+                _this.reacts.set(k, []);
             }
-            this.reacts.get(k).push(reactions[k]);
+            _this.reacts.get(k).push(reactions[k]);
         });
         /* dispose */
-        return () => {
-            Object.keys(reactions).forEach((k) => {
-                const reacts = this.reacts.get(k);
+        return function () {
+            Object.keys(reactions).forEach(function (k) {
+                var reacts = _this.reacts.get(k);
                 if (!reacts)
                     return;
-                const idx = reacts.findIndex(t => t === reactions[k]);
+                var idx = reacts.findIndex(function (t) { return t === reactions[k]; });
                 reacts.splice(idx, 1);
             });
         };
-    }
-    get eventCount() {
-        return this.events.size;
-    }
-    getSubscribers(event) {
-        return [...this.events.get(event)];
-    }
-    _dispatchFromObject(obj) {
-        Object.keys(obj).forEach((k) => {
-            this.dispatch(k, obj[k]);
+    };
+    Object.defineProperty(Dispatcher.prototype, "eventCount", {
+        get: function () {
+            return this.events.size;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Dispatcher.prototype.getSubscribers = function (event) {
+        return this.events.get(event).slice();
+    };
+    Dispatcher.prototype._dispatchFromObject = function (obj) {
+        var _this = this;
+        Object.keys(obj).forEach(function (k) {
+            _this.dispatch(k, obj[k]);
         });
-    }
+    };
     ;
-}
+    return Dispatcher;
+}());
 exports.Dispatcher = Dispatcher;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = Dispatcher;
